@@ -50,3 +50,12 @@ export const cancelEditItem = (dispatch) => (id) => {
 
   return dispatch(action)
 }
+
+export const filterItem = (dispatch) => (filter) => {
+  const action = {
+    type: 'FILTER_ITEM',
+    payload: filter
+  }
+
+  return dispatch(action)
+}

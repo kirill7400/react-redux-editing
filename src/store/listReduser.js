@@ -4,6 +4,8 @@ const initialState = {
   value: '',
   editMode: false,
   editId: 0,
+  filter: '',
+  filterArr: [],
   list: [
     { id: 0, name: 'Ремонт аккумулятора', value: '2500' },
     { id: 1, name: 'Ремонт экрана', value: '5500' },
@@ -61,8 +63,16 @@ const listReducer = (state = initialState, action) => {
         ...state,
         value: '',
         name: '',
+        filter: '',
         editMode: false,
         editId: 0,
+      }
+
+    case 'FILTER_ITEM':
+      return {
+        ...state,
+        filter: action.payload,
+        filterArr: state.list.filter(item => item.name.includes(action.payload))
       }
 
     default:
